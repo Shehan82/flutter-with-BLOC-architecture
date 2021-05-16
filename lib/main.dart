@@ -53,22 +53,34 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            BlocBuilder<CounterCubit, CounterState>(
+              builder: (context, state) {
+                return Text(
+                  state.counterValue.toString(),
+                  style: Theme.of(context).textTheme.headline4,
+                );
+              },
             ),
-            Row(
-              children: [
-                FloatingActionButton(
-                  onPressed: _incrementCounter,
-                  tooltip: 'Increment',
-                  child: Icon(Icons.add),
-                ),
-                FloatingActionButton(
-                    onPressed: _incrementCounter,
-                    tooltip: 'Decrement',
-                    child: Icon(Icons.remove)),
-              ],
+            Container(
+              width: 320,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {
+                      BlocProvider.of<CounterCubit>(context).increament();
+                    },
+                    tooltip: 'Increment',
+                    child: Icon(Icons.add),
+                  ),
+                  FloatingActionButton(
+                      onPressed: () {
+                        BlocProvider.of<CounterCubit>(context).decreament();
+                      },
+                      tooltip: 'Decrement',
+                      child: Icon(Icons.remove)),
+                ],
+              ),
             )
           ],
         ),
