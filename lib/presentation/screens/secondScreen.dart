@@ -62,6 +62,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     child: Icon(Icons.add),
                   ),
                   FloatingActionButton(
+                      heroTag: "btn3",
                       onPressed: () {
                         BlocProvider.of<CounterCubit>(context).decreament();
                       },

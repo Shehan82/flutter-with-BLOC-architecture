@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Icon(Icons.add),
                   ),
                   FloatingActionButton(
+                      heroTag: 'btn1',
                       onPressed: () {
                         BlocProvider.of<CounterCubit>(context).decreament();
                       },
@@ -73,15 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => BlocProvider.value(
-                              value: BlocProvider.of<CounterCubit>(context),
-                              child: SecondScreen(
-                                title: "second screen",
-                              ),
-                            )));
+                Navigator.of(context).pushNamed('/second');
               },
               color: Colors.amber,
               child: Text("Go to second screen"),

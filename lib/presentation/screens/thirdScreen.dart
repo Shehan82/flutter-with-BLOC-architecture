@@ -62,6 +62,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                     child: Icon(Icons.add),
                   ),
                   FloatingActionButton(
+                      heroTag: "btn2",
                       onPressed: () {
                         BlocProvider.of<CounterCubit>(context).decreament();
                       },

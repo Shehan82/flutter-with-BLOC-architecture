@@ -7,27 +7,39 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRoute {
-  final CounterCubit counterCubit = CounterCubit();
+  final CounterCubit _counterCubit = CounterCubit();
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider.value(value: counterCubit, child: MyHomePage()));
+            builder: (_) => BlocProvider.value(
+                value: _counterCubit,
+                child: MyHomePage(
+                  title: "blaaaaaaaa",
+                )));
         break;
       case '/second':
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider.value(value: counterCubit, child: SecondScreen()));
+            builder: (_) => BlocProvider.value(
+                value: _counterCubit,
+                child: SecondScreen(
+                  title: "blaaaaaaaa",
+                )));
         break;
       case '/third':
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider.value(value: counterCubit, child: ThirdScreen()));
-
+            builder: (_) => BlocProvider.value(
+                value: _counterCubit,
+                child: ThirdScreen(
+                  title: "blaaaaaaaa",
+                )));
         break;
       default:
         return null;
     }
+  }
+
+  void dispose() {
+    _counterCubit.close();
   }
 }

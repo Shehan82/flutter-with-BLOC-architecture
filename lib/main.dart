@@ -1,3 +1,4 @@
+import 'package:bloc_test/presentation/routes/app_route.dart';
 import 'package:bloc_test/presentation/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,13 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AppRoute _appRoute = AppRoute();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,10 +23,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider<CounterCubit>(
-        create: (context) => CounterCubit(),
-        child: MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
+      onGenerateRoute: _appRoute.onGenerateRoute,
     );
+  }
+
+  void dispose() {
+    _appRoute.dispose();
+    super.dispose();
   }
 }
