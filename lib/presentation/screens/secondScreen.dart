@@ -69,6 +69,11 @@ class _SecondScreenState extends State<SecondScreen> {
                       child: Icon(Icons.remove)),
                 ],
               ),
+            ),
+            MaterialButton(
+              onPressed: () {},
+              color: Colors.amber,
+              child: Text("Go to second screen"),
             )
           ],
         ),
