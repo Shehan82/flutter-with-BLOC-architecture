@@ -1,9 +1,5 @@
 import 'package:bloc_test/presentation/routes/app_route.dart';
-import 'package:bloc_test/presentation/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'logic/cubit/counter_cubit.dart';
 
 void main() {
   runApp(MyApp());
